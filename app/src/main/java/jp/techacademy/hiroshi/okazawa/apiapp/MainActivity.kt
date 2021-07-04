@@ -1,9 +1,12 @@
 package jp.techacademy.hiroshi.okazawa.apiapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,6 +17,11 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //val fab: View = findViewById(R.id.fab)
+        //fab.setOnClickListener {}
+
+
 
         // ViewPager2の初期化
         viewPager2.apply {
@@ -31,7 +39,19 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
     }
 
     override fun onClickItem(url: String) {
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.type = "text/plain"
+        startActivity(intent)
         WebViewActivity.start(this, url)
+    }
+
+    fun onClickItem(shop: Shop) {
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, shop.id)
+        startActivity(intent)
     }
 
     override fun onAddFavorite(shop: Shop) { // Favoriteに追加するときのメソッド(Fragment -> Activity へ通知する)
