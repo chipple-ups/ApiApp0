@@ -11,7 +11,7 @@ open class FavoriteShop: RealmObject(),Serializable  {
     var imageUrl: String = ""
     var name: String = ""
     var url: String = ""
-    val favoriteShop: FavoriteShop = FavoriteShop()
+    //val favoriteShop: FavoriteShop = FavoriteShop()
 
     companion object {
         fun findAll(): List<FavoriteShop> = // お気に入りのShopを全件取得

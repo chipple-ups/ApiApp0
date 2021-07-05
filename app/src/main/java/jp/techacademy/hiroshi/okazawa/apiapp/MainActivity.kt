@@ -3,14 +3,13 @@ package jp.techacademy.hiroshi.okazawa.apiapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), FragmentCallback {
+
 
     private val viewPagerAdapter by lazy { ViewPagerAdapter(this) }
 
@@ -37,15 +36,16 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         }.attach()
     }
 
-   //override fun onClickItem(url: String) {
-        //val intent = Intent()
-        //intent.action = Intent.ACTION_SEND
-        //intent.type = "text/plain"
-        //startActivity(intent)
-        //WebViewActivity.start(this, url)
-    //}
+   override fun onClickItem(url: String) {
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.type = "text/plain"
+        startActivity(intent)
+        WebViewActivity.start(this, url)
+    }
 
     override fun onClickItem(shop: Shop) {
+
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = "text/plain"

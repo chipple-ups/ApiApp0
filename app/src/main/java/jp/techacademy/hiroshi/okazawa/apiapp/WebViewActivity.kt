@@ -9,8 +9,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import io.realm.annotations.PrimaryKey
-import kotlinx.android.synthetic.main.activity_web_view.*
-import java.io.Serializable
 
 
 class WebViewActivity: AppCompatActivity() {
@@ -31,7 +29,7 @@ class WebViewActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
-        webView.loadUrl(intent.getStringExtra(KEY_URL).toString())
+        //webView.loadUrl(intent.getStringExtra(KEY_URL).toString())
 
 
         val fab: View = findViewById(R.id.fab)
@@ -40,6 +38,7 @@ class WebViewActivity: AppCompatActivity() {
             Log.d("UI_PARTS", "ボタンをタップしました")
             FavoriteShop.insert(FavoriteShop().apply {
                 val resultIntent = Intent(applicationContext, MainActivity::class.java)
+                val favoriteShop: FavoriteShop = FavoriteShop()
                 resultIntent.putExtra(Intent.EXTRA_TEXT, favoriteShop)
 
                 //id = SHOPID.id
@@ -56,7 +55,7 @@ class WebViewActivity: AppCompatActivity() {
         private const val VIEW_PAGER_POSITION_API = 0
         private const val VIEW_PAGER_POSITION_FAVORITE = 1
         private const val SHOPID = "shopid"
-        fun start(activity: Activity, favoriteShop: FavoriteShop) {
+        fun start(activity: Activity, favoriteShop: String) {
             activity.startActivity(Intent(activity, WebViewActivity::class.java).putExtra(SHOPID, favoriteShop))
         }
        //private const val KEY_URL = "key_url"
