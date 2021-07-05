@@ -19,6 +19,7 @@ class WebViewActivity: AppCompatActivity() {
     //private var fragmentCallback : FragmentCallback? = null // Fragment -> Activity にFavoriteの変更を通知する
     private val viewPagerAdapter by lazy { ViewPagerAdapter(this) }
 
+
     @PrimaryKey
     var id: String = ""
     var imageUrl: String = ""
@@ -30,7 +31,7 @@ class WebViewActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
-        //webView.loadUrl(intent.getStringExtra(KEY_URL).toString())
+        webView.loadUrl(intent.getStringExtra(KEY_URL).toString())
 
 
         val fab: View = findViewById(R.id.fab)
@@ -55,7 +56,7 @@ class WebViewActivity: AppCompatActivity() {
         private const val VIEW_PAGER_POSITION_API = 0
         private const val VIEW_PAGER_POSITION_FAVORITE = 1
         private const val SHOPID = "shopid"
-        fun start(activity: Activity, favoriteShop: Shop) {
+        fun start(activity: Activity, favoriteShop: FavoriteShop) {
             activity.startActivity(Intent(activity, WebViewActivity::class.java).putExtra(SHOPID, favoriteShop))
         }
        //private const val KEY_URL = "key_url"

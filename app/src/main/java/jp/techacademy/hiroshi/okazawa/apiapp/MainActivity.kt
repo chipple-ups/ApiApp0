@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         //fab.setOnClickListener {}
 
 
-
         // ViewPager2の初期化
         viewPager2.apply {
             adapter = viewPagerAdapter
@@ -38,15 +37,15 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         }.attach()
     }
 
-    override fun onClickItem(url: String) {
-        val intent = Intent()
-        intent.action = Intent.ACTION_SEND
-        intent.type = "text/plain"
-        startActivity(intent)
-        WebViewActivity.start(this, url)
-    }
+   //override fun onClickItem(url: String) {
+        //val intent = Intent()
+        //intent.action = Intent.ACTION_SEND
+        //intent.type = "text/plain"
+        //startActivity(intent)
+        //WebViewActivity.start(this, url)
+    //}
 
-    fun onClickItem(shop: Shop) {
+    override fun onClickItem(shop: Shop) {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = "text/plain"
